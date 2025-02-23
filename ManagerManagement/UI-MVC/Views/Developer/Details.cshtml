@@ -1,0 +1,21 @@
+@model Developer
+
+@{
+    ViewBag.Title = "Developer details";
+    Layout = "_Layout";
+}
+
+<h2>Developer Details</h2>
+
+<section class="mt-3">
+    
+    <div class="row mb-3">
+        <span class="col-sm-2 fw-bold">Developer name</span>
+        <span class="col-sm-10"> @Model.Name</span>
+    </div>
+    <div class="row mb-3">
+        <span class="col-sm-2 fw-bold">Prog. Language</span>
+        <span class="col-sm-10">@Model.ProgrammingLanguage</span>
+    </div>
+
+</section>

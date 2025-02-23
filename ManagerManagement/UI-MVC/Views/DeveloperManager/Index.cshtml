@@ -1,0 +1,37 @@
+@model IEnumerable<DeveloperManager>
+
+@{
+    ViewBag.Title = "All Managers";
+    Layout = "_Layout";
+}
+
+<h2>All Managers </h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>ProjectStatus</th>
+        <th>HireDate</th>
+        <th>salary</th>
+    </tr>
+    </thead>
+    
+    <tbody>
+    @foreach (DeveloperManager manager in Model)
+    {
+        <tr>
+            <td>@manager.Id</td>
+            <td>@manager.Name</td>
+            <td>@manager.Department</td>
+            <td>@manager.ProjectStatus.ToString()</td>
+            <td>@manager.HireDate</td>
+            <td>@manager.Salary</td>
+            <!-- > omdat ik voor detail parameter heb. ga ik new asp "asp-route-(name van de parameter) toevoegen <-->
+            <td><a asp-controller="DeveloperManager" asp-action="Details" asp-route-id="@manager.Id">Details</a></td>
+        </tr>
+    }
+    </tbody>
+</table>

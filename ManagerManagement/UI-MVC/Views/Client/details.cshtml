@@ -1,0 +1,28 @@
+@model Client
+
+@{
+    ViewBag.Title = "Client Details";
+    Layout = "_Layout";
+}
+
+<h2>Client Details</h2>
+
+<section class="mt-3">
+    <div class="row mb-3">
+        <span class="col-sm-2 fw-bold">Name</span>
+        <span class="col-sm-10">@Model.Name</span>
+    </div>
+    <div class="row mb-3">
+        <span class="col-sm-2 fw-bold">Birth Date</span>
+        <span class="col-sm-10">@Model.BirthDate</span>
+    </div>
+    <div class="row mb-3" > 
+        <span class="col-sm-2 fw-bold">Email Address</span>
+        <span class="col-sm-10">@Model.Email</span>
+    </div>
+</section>
+
+@section Scripts
+{
+    <script src="/js/client/details.js" defer></script>
+}

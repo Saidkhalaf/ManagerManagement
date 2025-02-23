@@ -1,0 +1,105 @@
+    @model DeveloperManager
+    @using ManagerManagement.UI.MVC
+@using Microsoft.AspNetCore.Identity
+    @{
+        ViewBag.Title = "Manager Details";
+        Layout = "_Layout";
+    }
+
+    <h2>Manager Details</h2>
+
+    <section class="mt-3">
+        <div class="row mb-3">
+            <span class="col-sm-2 fw-bold">Manager Id</span>
+            <span class="col-sm-10">@Model.Id</span>
+        </div>
+        <div class="row mb-3">
+            <span class="col-sm-2 fw-bold">Name</span>
+            <span class="col-sm-10">@Model.Name</span>
+        </div>
+        <div class="row mb-3">
+            <span class="col-sm-2 fw-bold">Department</span>
+            <span class="col-sm-10">@Model.Department</span>
+        </div>
+        <div class="row mb-3">
+            <span class="col-sm-2 fw-bold">ProjectStatus</span>
+            <span class="col-sm-10">@Model.ProjectStatus</span>
+        </div>
+        <div class="row mb-3">
+            <span class="col-sm-2 fw-bold">HireDate</span>
+            <span class="col-sm-10">@Model.HireDate.ToShortDateString()</span>
+        </div>
+        <div class="row mb-3">
+            <span class="col-sm-2 fw-bold">Salary</span>
+            
+            @* User.Identity.Name == Model.ManagerUser.UserName) *@
+            @if (User.IsInRole(CustomIdentityConstants.AdminRole) || (User.Identity.Name == @Model.MaintainedBy))
+                        {
+                            <p></p>
+                            <div class="col-sm-10 input-group">
+                                <span class="input-group-text">€</span>
+                                <input type="number" class="form-control" id="editableSalary" name="editableSalary" value="@Model.Salary"/>
+                            </div>
+                            <p></p>
+                            
+                            <div class="row mb-3 justify-content-center">
+                                <div class="col-sm-2">
+                                    <button type="button" class="btn btn-primary" id="updateSalaryButton" data-toggle="modal" data-target="#updateSalaryModal" style="margin-bottom: 10px;">
+                                        Update Salary
+                                    </button>
+                                </div>
+                            </div>
+                        
+                            <!-- Add success and error alert containers -->
+                            <div class="alert alert-success mt-3" role="alert" id="success-alert" style="display: none;">
+                                Salary updated successfully!
+                            </div>
+                            <div class="alert alert-danger mt-3" role="alert" id="error-alert" style="display: none;">
+                                Error updating salary. Please try again.
+                            </div>
+                                            
+                        }
+                        else 
+                        {
+                            <span class="col-sm-10" readonly>@Model.Salary</span>
+                            <p></p>                                     
+                            <p class="col-sm-10">Maintained By: @Model.MaintainedBy</p>
+                        }
+        </div>
+        
+    </section>
+        
+        <h3>Developers</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Programming Language</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var project in Model.ManagedProjects)
+        {
+            foreach (var task in project.ProjectTasks)
+            {
+                <tr>
+                    <td>@task.Developer.Name</td>
+                    <td>@task.Developer.ProgrammingLanguage</td>
+                    <td><a asp-controller="Developer" asp-action="Details" asp-route-id="@task.Developer.Id">Details</a></td>
+                </tr>
+                    
+            }
+        }
+        </tbody>
+    </table>
+    
+    <span id="managerId" style="display:none;">@Model.Id</span>
+    
+    @section Scripts
+    {
+        <script src="/js/DeveloperManager/updateManager.js" defer></script>
+    }
+    
+    
+    

@@ -1,0 +1,39 @@
+@{
+    ViewBag.Title = "All Clients";
+    Layout = "_Layout";
+}
+
+<h2>All Clients</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Birth Date</th>
+        <th>Email Address</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody id="clientTableBody">
+    @foreach (Client client in Model)
+    {
+        <tr>
+            <td>@client.Name</td>
+            <td>@client.BirthDate</td>
+            <td>@client.Email</td>
+            <td>
+                <!-- Link to client details page -->
+                <a href="client/Details/@client.Id">Details</a>
+            </td>
+        </tr>
+    
+    }
+
+    </tbody>
+</table>
+<button class="btn btn-primary" type="button" id="refreshButton">Refresh Clients List</button>
+
+
+@section Scripts
+{
+    <script src="js/client/index.js" defer></script>
+}

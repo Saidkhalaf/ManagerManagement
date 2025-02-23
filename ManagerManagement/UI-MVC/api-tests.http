@@ -1,0 +1,88 @@
+GET https://localhost:7200/api/Clients
+Accept: application/xml
+
+###
+GET https://localhost:7200/api/Clients/333
+Accept: application/json
+
+###
+POST https://localhost:7200/api/Clients
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id" : 33333333,
+  "name": "Said",
+  "birthDate": "1998-02-17",
+  "email": "said.khalaf1998@gmail.com",
+  "managerId": 111
+}
+
+###
+GET https://localhost:7200/api/DeveloperManagers
+Accept: application/json
+
+###
+GET https://localhost:7200/api/Projects
+Accept: application/json
+###
+GET https://localhost:7200/api/Projects/11
+Accept: application/json
+
+###
+GET https://localhost:7200/api/DeveloperTasks
+Accept: application/json
+###
+GET https://localhost:7200/api/DeveloperTasks/4
+Accept: application/json
+
+###
+POST https://localhost:7200/api/DeveloperTasks
+Accept: application/json
+Content-Type: application/json
+
+{
+    "id": 5,
+    "taskName": "Task 4",
+    "developerId": 222222,
+    "projectId": 4
+}
+
+###
+GET https://localhost:7200/api/Developers
+Accept: application/json
+
+###
+GET https://localhost:7200/api/Developers/222222
+Accept: application/json
+
+### Does not work
+POST https://localhost:7200/api/Clients
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id" : 33333333,
+  "name": "Said",
+  "birthDate": "1998-02-17",
+  "email": "said.khalaf1998@gmail.com",
+  "managerId": 111
+}
+
+
+### it works
+
+#@no-redirect
+#@no-cookie-jar
+POST https://localhost:7200/api/Clients
+Accept: application/json
+Content-Type: application/json
+Cookie: .AspNetCore.Antiforgery.yoNvFOGupyE=CfDJ8GKdn1u0PbNAgEJaMIPSeZiWGSL4GToasJVcZSEQ1BVLyoyM1cUo5n1fD1TqPzgVuZ3Uncrat411tL9HejoQntG-LOVVDbWBVnjudXTflpV70HMVfsUyUKjKJZGmWgv-zup5rjH0z5_aqsIYyih332A; .AspNetCore.Identity.Application=CfDJ8GKdn1u0PbNAgEJaMIPSeZg7N_u3yVyYY9Fx_Dz2rngXU6P9w1FJKZX1LusMf_htbsLXv42yiGahiq6Wl5J4yY5Afv_Vp4o51gHm7mnXmBO-48nxxhRFigrvOxdBH3icADZ6vwbGO1rQYf7DBlR1Iczkmot9V_BIQqa5Hgm-6bpfuLeoDKIVhTbzgbSMCtz0eDi4hrh50B4jVFhPVxIstA36E4Bkm9uc19VW5boGvj64RloLjYbSurjiMw57KWJcOmtJvTFzjWIORtu_PtoPyZi1OUxb_WAYWAxoRck6gSKFO2aY_yLpO8WHU8k_8Xghb25rUGvSM2Y-YPDlVFaHn-9Pl-Ya6guea8FkAvB9kSFcpWgQeD9NJZRwXZTd-2vScwCj_4tcm57YZcGXovTHRG1eQqc9ZrjFJZRYt3Zr7lReSfDDVSqc0kVNMerQpeEw9nycMJc8vyMjYq0H10H4eaKd7HuuxXedX4Fui1yYdKUtIYvM9h3MWpuU5FQyHJCobNhTiQXbIxhCwKb7Thfo2GNz4PeJcoW3y3fSh--CCrT71cA-LaGaOZuFAy1cf-opF_5vsUVvk8_ErGIERuy9U5mOlajBcNfttlUP9hFHf9Z84eic6jpUkV4HUVOWZNBpW3IuuTsN9rA6oETRM8c2GPuakLtMiTClneamsBHIiA6iQJdrWHxegE5WK9ejLEUEeAylyzJtBnj5PSayIaDo7ftV0d9fUrfJm77c_6YhSzqphQGA_Xm7QWjYfdQ2VKErD66O2aTpFpEPBQ-3R1PEi_MGBsDzfwk8vWt-TpvVgHtNtUPidxZwagE8qHAcUEHyYw
+
+{
+  "id": 22222,
+  "name": "Muhareb",
+  "birthDate" : "1965-04-21T00:00:00",
+  "email": "Ibrahim123@gmail.com",
+  "managerId": 1111
+}

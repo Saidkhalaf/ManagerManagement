@@ -1,0 +1,12 @@
+POST https://localhost:7200/DeveloperManager/Add
+Content-Type: application/x-www-form-urlencoded
+
+###
+
+GET https://localhost:7200/DeveloperManager/Add
+
+
+### Add A Manager
+#@no-cookie-jar
+#@no-redirect
+POST http://localhost:7200/
